@@ -61,7 +61,11 @@ struct Graph {
 };
 
 int main() {
+<<<<<<< HEAD
     string filename = "le450_5a.col";
+=======
+    string filename = "D:\\Hyh\\Develop\\Exp3\\Algorithm_exp3_mapcoloring\\le450_5a.col";
+>>>>>>> e3c726cad00306e9f89ed3a4ce37c1376505f306
     ifstream file(filename);
     if (!file.is_open()) {
         cerr << "无法打开文件: " << filename << endl;
