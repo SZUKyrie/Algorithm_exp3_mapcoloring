@@ -324,91 +324,85 @@ void testAlgorithm(const string& filename, int maxColor) {
     double timeTaken;
 
     // 普通回溯法
-    if (filename.find(string("small_data.col")) != string::npos) {
-        start = chrono::high_resolution_clock::now();
-        success = g.simple_backtrack(1);
-        end = chrono::high_resolution_clock::now();
-        timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        cout << "普通回溯法: ";
-        if (success) {
-            cout << "成功，用时 " << timeTaken << " 毫秒" << endl;
-        } else {
-            cout << "失败，用时 " << timeTaken << " 毫秒" << endl;
-        }
-        for (int i = 1; i <= nodes; i++) {
-            cout << i << " -> " << g.colors[i] << endl;
-        }
+    // start = chrono::high_resolution_clock::now();
+    // success = g.simple_backtrack(1);
+    // end = chrono::high_resolution_clock::now();
+    // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    // cout << "普通回溯法: ";
+    // if (success) {
+    //     cout << "成功，用时 " << timeTaken << " 微秒" << endl;
 
-        g = graph;
-        start = chrono::high_resolution_clock::now();
-        int count = g.simple_backtrack_count(1);
-        end = chrono::high_resolution_clock::now();
-        timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        cout << "普通回溯法(总数): " << count << ", 用时 " << timeTaken << " 毫秒" << endl;
-    }
-    
+    //     g = graph;
+    //     start = chrono::high_resolution_clock::now();
+    //     int count = g.simple_backtrack_count(1);
+    //     end = chrono::high_resolution_clock::now();
+    //     timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    //     cout << "普通回溯法(总数): " << count << ", 用时 " << timeTaken << " 微秒" << endl;
+    // } else {
+    //     cout << "失败，用时 " << timeTaken << " 微秒" << endl;
+    // }
 
-    // MRV优化
-    g = graph;
-    start = chrono::high_resolution_clock::now();
-    success = g.MRV_backtrack();
-    end = chrono::high_resolution_clock::now();
-    timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-    cout << "MRV优化: ";
-    if (success) {
-        cout << "成功，用时 " << timeTaken << " 毫秒" << endl;
+    // // MRV优化
+    // g = graph;
+    // start = chrono::high_resolution_clock::now();
+    // success = g.MRV_backtrack();
+    // end = chrono::high_resolution_clock::now();
+    // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    // cout << "MRV优化: ";
+    // if (success) {
+    //     cout << "成功，用时 " << timeTaken << " 微秒" << endl;
 
-        // g = graph;
-        // start = chrono::high_resolution_clock::now();
-        // int count = g.MRV_backtrack_count();
-        // end = chrono::high_resolution_clock::now();
-        // timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        // cout << "MRV优化(总数): " << count << ", 用时 " << timeTaken << " 毫秒" << endl;
-    } else {
-        cout << "失败，用时 " << timeTaken << " 毫秒" << endl;
-    }
+    //     // g = graph;
+    //     // start = chrono::high_resolution_clock::now();
+    //     // int count = g.MRV_backtrack_count();
+    //     // end = chrono::high_resolution_clock::now();
+    //     // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    //     // cout << "MRV优化(总数): " << count << ", 用时 " << timeTaken << " 微秒" << endl;
+    // } else {
+    //     cout << "失败，用时 " << timeTaken << " 微秒" << endl;
+    // }
 
 
-    // DH优化 
-    g = graph;
-    start = chrono::high_resolution_clock::now();
-    success = g.DH_backtrack(1);
-    end = chrono::high_resolution_clock::now();
-    timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-    cout << "DH优化: ";
-    if (success) {
-        cout << "成功，用时 " << timeTaken << " 毫秒" << endl;
+    // // DH优化 
+    // g = graph;
+    // start = chrono::high_resolution_clock::now();
+    // success = g.DH_backtrack(1);
+    // end = chrono::high_resolution_clock::now();
+    // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    // cout << "DH优化: ";
+    // if (success) {
+    //     cout << "成功，用时 " << timeTaken << " 微秒" << endl;
 
-        // g = graph;
-        // start = chrono::high_resolution_clock::now();
-        // int count = g.DH_backtrack_count(1);
-        // end = chrono::high_resolution_clock::now();
-        // timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        // cout << "DH优化(总数): " << count << ", 用时 " << timeTaken << " 毫秒" << endl;
-    } else {
-        cout << "失败，用时 " << timeTaken << " 毫秒" << endl;
-    }
+    //     // g = graph;
+    //     // start = chrono::high_resolution_clock::now();
+    //     // int count = g.DH_backtrack_count(1);
+    //     // end = chrono::high_resolution_clock::now();
+    //     // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    //     // cout << "DH优化(总数): " << count << ", 用时 " << timeTaken << " 微秒" << endl;
+    // } else {
+    //     cout << "失败，用时 " << timeTaken << " 微秒" << endl;
+    // }
 
-    // MRV+DH优化
-    g = graph;
-    start = chrono::high_resolution_clock::now();
-    success = g.MRV_DH_backtrack();
-    end = chrono::high_resolution_clock::now();
+    // // MRV+DH优化
+    // g = graph;
+    // start = chrono::high_resolution_clock::now();
+    // success = g.MRV_DH_backtrack();
+    // end = chrono::high_resolution_clock::now();
 
-    timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-    cout << "MRV+DH优化: ";
-    if (success) {
-        cout << "成功，用时 " << timeTaken << " 毫秒" << endl;
+    // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    // cout << "MRV+DH优化: ";
+    // if (success) {
+    //     cout << "成功，用时 " << timeTaken << " 微秒" << endl;
 
-        // g = graph;
-        // start = chrono::high_resolution_clock::now();
-        // int count = g.MRV_DH_backtrack_count();
-        // end = chrono::high_resolution_clock::now();
-        // timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        // cout << "MRV+DH优化(总数): " << count << ", 用时 " << timeTaken << " 毫秒" << endl;
-    } else {
-        cout << "失败，用时 " << timeTaken << " 毫秒" << endl;
-    }
+    //     // g = graph;
+    //     // start = chrono::high_resolution_clock::now();
+    //     // int count = g.MRV_DH_backtrack_count();
+    //     // end = chrono::high_resolution_clock::now();
+    //     // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    //     // cout << "MRV+DH优化(总数): " << count << ", 用时 " << timeTaken << " 微秒" << endl;
+    // } else {
+    //     cout << "失败，用时 " << timeTaken << " 微秒" << endl;
+    // }
 
     // MRV+DH+向前探测优化
     g = graph;
@@ -416,19 +410,19 @@ void testAlgorithm(const string& filename, int maxColor) {
     success = g.MRV_DH_FC_backtrack();
     end = chrono::high_resolution_clock::now();
 
-    timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
     cout << "MRV+DH+向前探测优化: ";
     if (success) {
-        cout << "成功，用时 " << timeTaken << " 毫秒" << endl;
+        cout << "成功，用时 " << timeTaken << " 微秒" << endl;
 
         // g = graph;
         // start = chrono::high_resolution_clock::now();
         // int count = g.MRV_DH_FC_backtrack_count();
         // end = chrono::high_resolution_clock::now();
-        // timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-        // cout << "MRV+DH+向前探测优化(总数): " << count << ", 用时 " << timeTaken << " 毫秒" << endl;
+        // timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
+        // cout << "MRV+DH+向前探测优化(总数): " << count << ", 用时 " << timeTaken << " 微秒" << endl;
     } else {
-        cout << "失败，用时 " << timeTaken << " 毫秒" << endl;
+        cout << "失败，用时 " << timeTaken << " 微秒" << endl;
     }
 
     cout << "----------------------------------------" << endl;
@@ -438,9 +432,30 @@ void testAlgorithm(const string& filename, int maxColor) {
 int main() {
 
     //testAlgorithm("small_data.col", 4);
-    testAlgorithm("le450_25a.col", 25);
-    testAlgorithm("le450_5a.col", 5);
+    //testAlgorithm("le450_25a.col", 25);
+    //testAlgorithm("le450_5a.col", 5);
     //testAlgorithm("le450_15b.col", 15);
+    // testAlgorithm("300_250.col",  6);
+    // testAlgorithm("300_500.col",  6);
+    // testAlgorithm("300_750.col",  6);
+    // testAlgorithm("300_1000.col", 6);
+    // testAlgorithm("300_1250.col", 6);
+    // testAlgorithm("300_1500.col", 6);
+    // testAlgorithm("300_1750.col", 6);
+    // testAlgorithm("300_2000.col", 6);
+    // testAlgorithm("300_2250.col", 6);
+    // testAlgorithm("300_2500.col", 6);
+
+    testAlgorithm("250_1250.col", 6);
+    testAlgorithm("500_2500.col",   6);
+    testAlgorithm("750_3750.col",   6);
+    testAlgorithm("1000_5000.col",  6);
+    testAlgorithm("1250_6250.col",  6);
+    testAlgorithm("1500_7500.col",  6);
+    testAlgorithm("1750_8750.col",  6);
+    testAlgorithm("2000_10000.col", 6);
+    testAlgorithm("2250_11250.col", 6);
+    testAlgorithm("2500_12500.col", 6);
 
     return 0;
 }
